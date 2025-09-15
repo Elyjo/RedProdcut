@@ -23,4 +23,4 @@ Homestead.yaml
 Thumbs.db
 
 # Autoriser public/build pour déploiement sur Railway
-!/public/build
+/public/build
