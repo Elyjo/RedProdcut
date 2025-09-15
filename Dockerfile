@@ -1,11 +1,11 @@
 # Étape 1 : image PHP
 FROM php:8.2-fpm
 
-# Installer les dépendances système + Node.js/NPM + PostgreSQL
+# Installer les dépendances système + Node.js/NPM + SQLite/PostgreSQL
 RUN apt-get update && apt-get install -y \
-  libzip-dev zip unzip git curl libpng-dev libonig-dev libxml2-dev \
-  libpq-dev nodejs npm \
-  && docker-php-ext-install pdo_mysql pdo_pgsql pgsql mbstring exif pcntl bcmath gd
+    libzip-dev zip unzip git curl libpng-dev libonig-dev libxml2-dev \
+    libpq-dev sqlite3 nodejs npm \
+    && docker-php-ext-install pdo_mysql pdo_pgsql pdo_sqlite pgsql mbstring exif pcntl bcmath gd
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -26,12 +26,11 @@ RUN npm run build
 # Permissions Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Créer le fichier SQLite si DB_CONNECTION=sqlite
 RUN mkdir -p /var/www/html/database && touch /var/www/html/database/database.sqlite
-RUN php artisan migrate --force
-
 
 # Exposer le port
 EXPOSE 8000
 
-# Lancer Laravel
-CMD php artisan serve --host=0.0.0.0 --port=8000
+# Lancer Laravel avec les migrations à l’entrée
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000
