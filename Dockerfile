@@ -1,11 +1,11 @@
 # Étape 1 : image PHP
 FROM php:8.2-fpm
 
-# Installer les dépendances système + Node.js/NPM
+# Installer les dépendances système + Node.js/NPM + PostgreSQL
 RUN apt-get update && apt-get install -y \
   libzip-dev zip unzip git curl libpng-dev libonig-dev libxml2-dev \
-  nodejs npm \
-  && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+  libpq-dev nodejs npm \
+  && docker-php-ext-install pdo_mysql pdo_pgsql pgsql mbstring exif pcntl bcmath gd
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
