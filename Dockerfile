@@ -26,6 +26,10 @@ RUN npm run build
 # Permissions Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+RUN mkdir -p /var/www/html/database && touch /var/www/html/database/database.sqlite
+RUN php artisan migrate --force
+
+
 # Exposer le port
 EXPOSE 8000
 
