@@ -1,50 +1,23 @@
-# Utilise une image officielle PHP avec Apache
-FROM php:8.2-apache
+# 1️⃣ Image de base
+FROM php:8.2-fpm
 
-# Variables d'environnement
-ENV APP_ENV=production
-ENV APP_DEBUG=false
-
-# Installe les extensions PHP nécessaires
+# 2️⃣ Installer les extensions et composer
 RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    curl \
-    libzip-dev \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    libcurl4-openssl-dev \
-    zip \
-    nodejs \
-    npm \
-    && docker-php-ext-install pdo pdo_mysql mbstring zip exif pcntl bcmath gd \
-    && a2enmod rewrite
+    zip unzip git libonig-dev libzip-dev && \
+    docker-php-ext-install pdo_mysql mbstring zip
 
-# Définir le répertoire de travail
+# Installer Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# 3️⃣ Copier le code d'abord
 WORKDIR /var/www/html
+COPY . .
 
-# Copier composer.lock et composer.json
-COPY composer.lock composer.json /var/www/html/
-
-# Installer composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Installer les dépendances PHP
+# 4️⃣ Installer les dépendances PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# Copier tout le projet
-COPY . /var/www/html
-
-# Installer les dépendances Node
-RUN npm install
-RUN npm run build
-
-# Donner les permissions aux dossiers de stockage et bootstrap
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
-# Exposer le port utilisé par Railway
+# 5️⃣ Exposer le port
 EXPOSE 8080
 
-# Lancer Apache sur le port défini par Railway
-CMD ["apache2-foreground"]
+# 6️⃣ Lancer le serveur PHP (Laravel Sail style)
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
