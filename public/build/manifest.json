@@ -1,0 +1,154 @@
+{
+  "_AuthenticatedLayout-BrB3ySBu.js": {
+    "file": "assets/AuthenticatedLayout-BrB3ySBu.js",
+    "name": "AuthenticatedLayout",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_Checkbox-CppUHrkv.js": {
+    "file": "assets/Checkbox-CppUHrkv.js",
+    "name": "Checkbox",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_GuestLayout-Bb1w-Dmu.js": {
+    "file": "assets/GuestLayout-Bb1w-Dmu.js",
+    "name": "GuestLayout",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_InputError-o4HO0xUr.js": {
+    "file": "assets/InputError-o4HO0xUr.js",
+    "name": "InputError",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_PrimaryButton-Dv8oKlxp.js": {
+    "file": "assets/PrimaryButton-Dv8oKlxp.js",
+    "name": "PrimaryButton",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_TextInput-Bk46bNZ4.js": {
+    "file": "assets/TextInput-Bk46bNZ4.js",
+    "name": "TextInput",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "_button-DKiHQE78.js": {
+    "file": "assets/button-DKiHQE78.js",
+    "name": "button",
+    "imports": [
+      "resources/js/app.jsx"
+    ]
+  },
+  "resources/js/Pages/Auth/ForgotPassword.jsx": {
+    "file": "assets/ForgotPassword-BMRWNG9_.js",
+    "name": "ForgotPassword",
+    "src": "resources/js/Pages/Auth/ForgotPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError-o4HO0xUr.js",
+      "_PrimaryButton-Dv8oKlxp.js",
+      "_TextInput-Bk46bNZ4.js",
+      "_GuestLayout-Bb1w-Dmu.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Login.jsx": {
+    "file": "assets/Login-BDjmyPpb.js",
+    "name": "Login",
+    "src": "resources/js/Pages/Auth/Login.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_Checkbox-CppUHrkv.js",
+      "_PrimaryButton-Dv8oKlxp.js",
+      "_TextInput-Bk46bNZ4.js",
+      "_GuestLayout-Bb1w-Dmu.js"
+    ]
+  },
+  "resources/js/Pages/Auth/Register.jsx": {
+    "file": "assets/Register-CjRGejUx.js",
+    "name": "Register",
+    "src": "resources/js/Pages/Auth/Register.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError-o4HO0xUr.js",
+      "_Checkbox-CppUHrkv.js",
+      "_PrimaryButton-Dv8oKlxp.js",
+      "_TextInput-Bk46bNZ4.js",
+      "_GuestLayout-Bb1w-Dmu.js"
+    ]
+  },
+  "resources/js/Pages/Auth/ResetPassword.jsx": {
+    "file": "assets/ResetPassword-BpwlytOp.js",
+    "name": "ResetPassword",
+    "src": "resources/js/Pages/Auth/ResetPassword.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_InputError-o4HO0xUr.js",
+      "_button-DKiHQE78.js",
+      "_TextInput-Bk46bNZ4.js",
+      "_GuestLayout-Bb1w-Dmu.js"
+    ]
+  },
+  "resources/js/Pages/Auth/VerifyEmail.jsx": {
+    "file": "assets/VerifyEmail-BryOkKYf.js",
+    "name": "VerifyEmail",
+    "src": "resources/js/Pages/Auth/VerifyEmail.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_PrimaryButton-Dv8oKlxp.js",
+      "_GuestLayout-Bb1w-Dmu.js"
+    ]
+  },
+  "resources/js/Pages/Dashboard.jsx": {
+    "file": "assets/Dashboard-kY9lqjLb.js",
+    "name": "Dashboard",
+    "src": "resources/js/Pages/Dashboard.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_AuthenticatedLayout-BrB3ySBu.js"
+    ]
+  },
+  "resources/js/Pages/Hotels/Index.jsx": {
+    "file": "assets/Index-CvbU6o9e.js",
+    "name": "Index",
+    "src": "resources/js/Pages/Hotels/Index.jsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.jsx",
+      "_button-DKiHQE78.js",
+      "_AuthenticatedLayout-BrB3ySBu.js"
+    ]
+  },
+  "resources/js/app.jsx": {
+    "file": "assets/app-COpBk00a.js",
+    "name": "app",
+    "src": "resources/js/app.jsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "resources/js/Pages/Auth/ForgotPassword.jsx",
+      "resources/js/Pages/Auth/Login.jsx",
+      "resources/js/Pages/Auth/Register.jsx",
+      "resources/js/Pages/Auth/ResetPassword.jsx",
+      "resources/js/Pages/Auth/VerifyEmail.jsx",
+      "resources/js/Pages/Dashboard.jsx",
+      "resources/js/Pages/Hotels/Index.jsx"
+    ],
+    "css": [
+      "assets/app-C-drot-X.css"
+    ]
+  }
+}

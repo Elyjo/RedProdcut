@@ -1,0 +1,1 @@
+import{j as t}from"./app-COpBk00a.js";function o({className:e="",...r}){return t.jsx("input",{...r,type:"checkbox",className:"h-4 w-4 sm:h-5 sm:w-5 rounded-[2.67px] border-2 border-[#9E9E9E] text-blue-600 shadow-sm caret-transparent "+e})}export{o as C};
