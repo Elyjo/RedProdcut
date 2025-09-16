@@ -162,7 +162,7 @@ export default function AuthenticatedLayout({ header, children, menu = 'dash' })
                                 <div className=" caret-transparent relative right-[110px] sm:right-0 sm:top-0 top-[-22px] ">
                                     <img className="sm:w-[42.66px] sm:h-[42.66px] w-[30px] h-[30px] ml-5" src="/avatar.png" alt="avatar" />
                                     <span
-                                        className="absolute sm:top-[26px] top-[20px] right-0 block sm:w-[13.33px] sm:h-[13.33px] w-[8px] h-[8px] bg-[#00FF92] rounded-[13.33px] sm:ring-2 ring-2 ring-white flex flex-col items-center">
+                                        className="absolute sm:top-[26px] top-[20px] right-0 block sm:w-[13.33px] sm:h-[13.33px] w-[8px] h-[8px] bg-[#00FF92] rounded-[13.33px] sm:ring-[3px] ring-2 ring-white flex flex-col items-center">
                                     </span>
                                 </div>
 
@@ -266,7 +266,7 @@ export default function AuthenticatedLayout({ header, children, menu = 'dash' })
                                 <div className=" caret-transparent relative right-[110px] sm:right-0 sm:top-0 top-[-22px] ">
                                     <img className="sm:w-[42.66px] sm:h-[42.66px] w-[30px] h-[30px] ml-5" src="/avatar.png" alt="avatar" />
                                     <span
-                                        className="absolute sm:top-[26px] top-[20px] right-0 block sm:w-[13.33px] sm:h-[13.33px] w-[8px] h-[8px] bg-[#00FF92] rounded-[13.33px] sm:ring-2 ring-2 ring-white flex flex-col items-center">
+                                        className="absolute sm:top-[26px] top-[20px] right-0 block sm:w-[13.33px] sm:h-[13.33px] w-[8px] h-[8px] bg-[#00FF92] rounded-[13.33px] sm:ring-[3px] ring-2 ring-white flex flex-col items-center">
                                     </span>
                                 </div>
 
