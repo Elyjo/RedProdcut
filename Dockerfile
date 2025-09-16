@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV APP_URL=https://red-product.up.railway.app
 ENV ASSET_URL=https://red-product.up.railway.app
 
-# Installer dépendances système
+# Installer dépendances système (GD, PostgreSQL, etc.)
 RUN apt-get update && apt-get install -y \
     git unzip zip curl \
     libzip-dev zlib1g-dev \
@@ -23,7 +23,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Copier les fichiers
+# Copier le projet
 COPY . .
 
 # Installer dépendances PHP
@@ -34,17 +34,21 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
   && apt-get install -y nodejs \
   && npm install -g npm@latest
 
-# Nettoyer cache Laravel avant build front
+# Nettoyer cache Laravel
 RUN php artisan config:clear \
  && php artisan route:clear \
  && php artisan view:clear
 
-# Installer front et builder avec HTTPS pour assets
-ENV ASSET_URL=https://red-product.up.railway.app
-RUN npm install && npm run build
+# Installer front-end et builder en HTTPS
+RUN npm install
+ENV VITE_APP_URL=https://red-product.up.railway.app
+RUN npm run build
 
-# Permissions
+# Permissions Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Créer fichier SQLite si nécessaire
+RUN mkdir -p /var/www/html/database && touch /var/www/html/database/database.sqlite
 
 EXPOSE 8000
 
