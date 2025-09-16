@@ -1,8 +1,10 @@
 FROM php:8.2-fpm
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV APP_URL=https://red-product.up.railway.app
+ENV ASSET_URL=https://red-product.up.railway.app
 
-# Installer dépendances système (inclut libs pour GD, sqlite, postgres, etc.)
+# Installer dépendances système (libs GD, SQLite, Postgres, etc.)
 RUN apt-get update && apt-get install -y \
     git unzip zip curl \
     libzip-dev zlib1g-dev \
@@ -25,13 +27,18 @@ WORKDIR /var/www/html
 # Copier les fichiers du projet
 COPY . .
 
-# Installer les dépendances PHP
+# Installer dépendances PHP
 RUN composer install --no-dev --optimize-autoloader
 
 # Installer Node.js (via NodeSource)
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
   && apt-get update && apt-get install -y nodejs \
   && npm install -g npm@latest
+
+# Nettoyer cache Laravel avant build front
+RUN php artisan config:clear \
+ && php artisan route:clear \
+ && php artisan view:clear
 
 # Installer dépendances front et builder
 RUN npm install && npm run build
@@ -44,4 +51,5 @@ RUN mkdir -p /var/www/html/database && touch /var/www/html/database/database.sql
 
 EXPOSE 8000
 
+# Migration + lancement Laravel
 CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000

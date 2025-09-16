@@ -25,7 +25,7 @@ export default function Register() {
             <Head title="Register" />
 
             <form onSubmit={submit}>
-                <h1 className="text-base sm:text-lg sm:text-left md:text-xl mb-2 sm:mb-4 font-normal caret-transparent">Inscrivez-vous en tant que Admin</h1>
+                <h1 className="text-base sm:text-lg sm:text-left md:text-xl mb-2 sm:mb-2 font-normal caret-transparent">Inscrivez-vous en tant que Admin</h1>
                 <div>
 
                     <TextInput

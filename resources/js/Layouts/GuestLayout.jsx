@@ -25,7 +25,7 @@ export default function GuestLayout({ children, authType = 'login' }) {
             {authType === 'login' && (
                 <>
                     <Link href={route('password.request')} 
-                        className="text-base sm:text-lg text-[#FFD964] font-semibold mt-6 sm:mt-8 caret-transparent">Mot de passe oublié?
+                        className="text-base sm:text-lg text-[#FFD964] font-semibold mt-6 sm:mt-2 caret-transparent">Mot de passe oublié?
                     </Link>
                     <p className="text-base sm:text-lg text-gray-300 font-normal mt-4 caret-transparent">Vous n'avez pas de compte?
                         <Link href={route('register')} className="text-base sm:text-lg text-[#FFD964] font-semibold ml-1 caret-transparent">
@@ -38,7 +38,7 @@ export default function GuestLayout({ children, authType = 'login' }) {
             {authType === 'register' && (
 
                  <>
-                    <p className="text-base sm:text-lg text-gray-300 font-normal mt-4 caret-transparent">Vous avez déjà un compte?
+                    <p className="text-base sm:text-lg text-gray-300 font-normal mt-1 caret-transparent">Vous avez déjà un compte?
                         <Link href={route('login')} className="text-base sm:text-lg text-[#FFD964] font-semibold ml-1 caret-transparent">
                             Se connecter
                         </Link>
