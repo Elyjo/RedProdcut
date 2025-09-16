@@ -4,35 +4,34 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV APP_URL=https://red-product.up.railway.app
 ENV ASSET_URL=https://red-product.up.railway.app
 
-# Installer dépendances système (libs GD, SQLite, Postgres, etc.)
+# Installer dépendances système
 RUN apt-get update && apt-get install -y \
     git unzip zip curl \
     libzip-dev zlib1g-dev \
     libpng-dev libjpeg-dev libfreetype-dev \
     libonig-dev libxml2-dev \
-    libpq-dev libsqlite3-dev \
-    build-essential \
+    libpq-dev build-essential \
   && rm -rf /var/lib/apt/lists/*
 
-# Configurer et installer GD
+# Configurer et installer GD et extensions PHP
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype \
   && docker-php-ext-install -j$(nproc) \
-    pdo_mysql pdo_pgsql pdo_sqlite mbstring exif pcntl bcmath gd zip
+    pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd zip
 
 # Installer Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Copier les fichiers du projet
+# Copier les fichiers
 COPY . .
 
 # Installer dépendances PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# Installer Node.js (via NodeSource)
+# Installer Node.js + NPM
 RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-  && apt-get update && apt-get install -y nodejs \
+  && apt-get install -y nodejs \
   && npm install -g npm@latest
 
 # Nettoyer cache Laravel avant build front
@@ -40,14 +39,12 @@ RUN php artisan config:clear \
  && php artisan route:clear \
  && php artisan view:clear
 
-# Installer dépendances front et builder
+# Installer front et builder avec HTTPS pour assets
+ENV ASSET_URL=https://red-product.up.railway.app
 RUN npm install && npm run build
 
 # Permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
-# Créer fichier sqlite si besoin
-RUN mkdir -p /var/www/html/database && touch /var/www/html/database/database.sqlite
 
 EXPOSE 8000
 
