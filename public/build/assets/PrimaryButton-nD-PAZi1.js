@@ -1,1 +1,0 @@
-import{j as o}from"./app-DxlsKfRZ.js";function x({className:r="",disabled:t,children:e,...n}){return o.jsx("button",{...n,className:`bg-[#45484B] text-white text-lg sm:text-xl  w-full py-2 sm:py-3 rounded-[5.33px] caret-transparent ${t&&"opacity-25"} `+r,disabled:t,children:e})}export{x as P};

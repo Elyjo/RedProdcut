@@ -7,9 +7,10 @@ export default defineConfig({
         laravel({
             input: 'resources/js/app.jsx',
             refresh: true,
-            // préciser l’URL pour les assets si nécessaire
-            publicDirectory: 'public/build',
+            // Assure que Vite utilise ASSET_URL en prod
+            publicDirectory: 'public',
         }),
         react(),
     ],
+    base: process.env.ASSET_URL ? process.env.ASSET_URL + '/' : '/',
 });
