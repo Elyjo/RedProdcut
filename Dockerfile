@@ -40,9 +40,7 @@ RUN php artisan config:clear \
  && php artisan view:clear
 
 # Installer front-end et builder en HTTPS
-RUN npm install
-ENV VITE_APP_URL=https://red-product.up.railway.app
-RUN npm run build
+RUN npm install && npm run build && ls -l public/build
 
 # Permissions Laravel
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
