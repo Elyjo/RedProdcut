@@ -1,5 +1,4 @@
 import Checkbox from '@/Components/Checkbox';
-import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
@@ -7,14 +6,14 @@ import { Head, useForm } from '@inertiajs/react';
 
 
 export default function Login({ status}) {
-    const { data, setData, post, processing, errors, reset } = useForm({
+    const { data, setData, post, processing, reset } = useForm({
         email: '',
         password: '',
         remember: false,
     });
 
-    const submit = (e) => {
-        e.preventDefault();
+    const submit = (event) => {
+        event.preventDefault();
 
         post(route('login'), {
             onFinish: () => 

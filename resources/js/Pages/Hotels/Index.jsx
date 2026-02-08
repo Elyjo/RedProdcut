@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 
 
-export default function Index({ }) {
+export default function Index() {
     const { hotels } = usePage().props;
     const [showadd, setShowadd] = useState(false);
     const [photo, setPhoto] = useState(null);
@@ -110,6 +110,7 @@ export default function Index({ }) {
                     <p className="sm:text-[32px] tex-xl font-thin relative right-[8px] sm:right-0 ">Hôtels <span className="text-[#C3C3C3DE]">{hotels.length}</span></p>
                     <Button
                         onClick={() => setShowadd(true)}
+                        
 
                         className="bg-white sm:px-6 sm:py-2 px-2 py-1 rounded-[14px] border border-1 border-[#AEAEAE] mr-5 relative sm:left-[20px] left-[20px]"
                     >
